@@ -12,7 +12,22 @@ interface ElementCardProps {
   category: string
 }
 
-function ElementCard({atomicNumber, symbol, name, atomicMass, indName, xpos, ypos, phase, category,}: ElementCardProps) {
+function ElementCard({
+  atomicNumber,
+  symbol,
+  name,
+  atomicMass,
+  indName,
+  xpos,
+  ypos,
+  phase,
+  category,
+}: ElementCardProps) {
+
+  // Golongan A (Main Group)
+  const golonganA = new Set([1, 2, 13, 14, 15, 16, 17, 18])
+  const isGolonganA = golonganA.has(xpos)
+
   const colorClass =
     PHASE_COLOR_MAP[phase as keyof typeof PHASE_COLOR_MAP] ||
     (category === "synthetic"
@@ -32,31 +47,43 @@ function ElementCard({atomicNumber, symbol, name, atomicMass, indName, xpos, ypo
       <div className="bg-white rounded-lg h-full flex flex-col items-center relative">
 
         {/* Atomic Mass */}
-        <span className="absolute top-1 left-1 text-xs md:font-semibold">
-          {atomicMass}
-        </span>
+        {!isGolonganA && (
+          <span className="absolute top-1 left-1 text-xs md:font-semibold">
+            {atomicMass}
+          </span>
+        )}
 
         {/* Symbol */}
-        <div className="flex-1 flex items-center justify-center">
-          <span className="md:text-4xl sm:text-xl font-extrabold">
-            {symbol}
+        {!isGolonganA && (
+          <div className="flex-1 flex items-center justify-center">
+            <span className="md:text-4xl sm:text-xl font-extrabold">
+              {symbol}
+            </span>
+          </div>
+        )}
+
+        {/* Atomic Number */}
+        {!isGolonganA && (
+          <span className="absolute bottom-6 left-1 text-xs md:font-semibold">
+            {atomicNumber}
           </span>
-        </div>
+        )}
 
-        {/* Atomic NUmber */}
-        <span className="absolute bottom-6 left-1 text-xs md:font-semibold">
-          {atomicNumber}
-        </span>
-
-        {/* Footer */}
+        {/* Indonesian Name */}
+        {!isGolonganA && (
           <div className="text-[8px] capitalize truncate">
             {indName}
           </div>
-        <div className={`w-full text-center border-t ${borderColor} py-1`}>
-          <div className="text-[8px] md:text-[9px] font-semibold uppercase truncate">
-            {name}
+        )}
+
+        {/* Footer */}
+        {!isGolonganA && (
+          <div className={`w-full text-center border-t ${borderColor} py-1`}>
+            <div className="text-[8px] md:text-[9px] font-semibold uppercase truncate">
+              {name}
+            </div>
           </div>
-        </div>
+        )}
 
       </div>
     </div>
