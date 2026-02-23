@@ -488,6 +488,7 @@
             "appearance": "silvery white metallic",
             "atomic_mass": 22.989769282,
             "boil": 1156.09,
+            "IndName": "Natrium",
             "category": "alkali metal",
             "density": 0.968,
             "discovered_by": "Humphry Davy",

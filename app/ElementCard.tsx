@@ -27,13 +27,13 @@ function ElementCard({atomicNumber, symbol, name, atomicMass, indName, xpos, ypo
         gridColumnStart: xpos,
         gridRowStart: ypos,
       }}
-      className={` ${bgColor} rounded-xl p-1 aspect-3/4 min-w-16 md:min-w-22 max-w-24`}
+      className={` ${bgColor} rounded-xl p-1 aspect-3/4 min-w-16 md:min-w-18 max-w-24`}
     >
       <div className="bg-white rounded-lg h-full flex flex-col items-center relative">
 
-        {/* Atomic number */}
+        {/* Atomic Mass */}
         <span className="absolute top-1 left-1 text-xs md:font-semibold">
-          {atomicNumber}
+          {atomicMass}
         </span>
 
         {/* Symbol */}
@@ -43,16 +43,16 @@ function ElementCard({atomicNumber, symbol, name, atomicMass, indName, xpos, ypo
           </span>
         </div>
 
-        {/* Atomic mass */}
+        {/* Atomic NUmber */}
         <span className="absolute bottom-6 left-1 text-xs md:font-semibold">
-          {atomicMass}
+          {atomicNumber}
         </span>
 
         {/* Footer */}
-        <div className={`w-full text-center border-t ${borderColor} py-1`}>
-          <div className="text-[9px] capitalize truncate">
+          <div className="text-[8px] capitalize truncate">
             {indName}
           </div>
+        <div className={`w-full text-center border-t ${borderColor} py-1`}>
           <div className="text-[8px] md:text-[9px] font-semibold uppercase truncate">
             {name}
           </div>

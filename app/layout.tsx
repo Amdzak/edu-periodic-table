@@ -2,6 +2,7 @@ import "./globals.css";
 
 import type { Metadata } from "next";
 import PeriodicTable from "./PeriodicTable";
+import Topbar from "./Topbar";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -12,6 +13,7 @@ export default function RootLayout(): React.ReactNode {
   return (
     <html lang="en">
       <body>
+        <Topbar />
         <PeriodicTable />
       </body>
     </html>
